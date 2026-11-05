@@ -15,5 +15,5 @@ services:
       caddyfile: |
         ${JOPLIN_WEB_HOST} {
             header -Server
-            reverse_proxy upstream:22300
+            reverse_proxy joplin:22300
         }
