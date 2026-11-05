@@ -1,3 +1,5 @@
+name: joplin
+
 services:
   joplin:
     image: joplin/server:3.7.2
