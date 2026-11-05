@@ -1,0 +1,19 @@
+services:
+  joplin:
+    image: joplin/server:3.7.2
+    container_name: joplin
+    restart: unless-stopped
+    volumes:
+      - "${JOPLIN_DATA}:/mydata"
+    environment:
+      APP_PORT: 22300
+      APP_BASE_URL: "https://${JOPLIN_WEB_HOST}"
+      DB_CLIENT: sqlite3
+      SQLITE_DATABASE: "/mydata/db.sqlite3"
+      STORAGE_DRIVER: "Type=Filesystem; Path=/mydata/files"
+    labels:
+      caddyfile: |
+        ${JOPLIN_WEB_HOST} {
+            header -Server
+            reverse_proxy upstream:22300
+        }
