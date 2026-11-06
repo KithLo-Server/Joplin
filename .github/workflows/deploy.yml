@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   deploy:
-    runs-on: [self-hosted, shared]
+    runs-on: self-hosted
     env:
       JOPLIN_DATA: ${{ vars.JOPLIN_DATA }}
       JOPLIN_WEB_HOST: ${{ vars.JOPLIN_WEB_HOST }}
